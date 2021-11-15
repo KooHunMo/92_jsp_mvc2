@@ -48,7 +48,7 @@
 		<p>메가 아카데미를 찾아주셔서 감사합니다.</p>
 		<hr>
 		
-		<form action="join.do" method="post" onsubmit="return dornVaildationCheck()"></form>
+		<form action="join92.do" method="post" onsubmit="return dornVaildationCheck()"></form>
 		
 		<h4>로그인 정보</h4>
 		<label for="id">아이디 : </label><input type="text" id="id" name="id" autofocus>

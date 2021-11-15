@@ -72,7 +72,7 @@ public class MemberDao {
 		}
 		
 		
-		public boolean loginMember(String id, String pw) {
+		public boolean loginMember(String id, String pw) {  //왜 memberDto가 아닌지?
 			boolean isLogin = false;
 			
 			try {
