@@ -1,3 +1,4 @@
+
 package step1_00_login.controller;
 
 import java.io.IOException;
@@ -17,75 +18,76 @@ import step1_00_login.dto.MemberDto;
 public class Update extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-  
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	HttpSession session = request.getSession();		// 세션연결
-	String id = (String)session.getAttribute("id");		// 연결된 세션에서 id 받아오기
-	
-	MemberDto memberDto = MemberDao.getIstance().getOneMemberInfo(id);		// 받아온 아이디로 getOneMemberInfo 실행
-	
-	if(memberDto.getField() != null) { // 지원분야가 없으면 > 최초지원
 		
-		String[] skills = memberDto.getSkill().split(",");
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
 		
-		for (String skill : skills) {
-			if(skill.equals("html")) request.setAttribute("html", true);
-			if(skill.equals("css")) request.setAttribute("css", true);
-			if(skill.equals("javascript")) request.setAttribute("javascript", true);
-			if(skill.equals("java")) request.setAttribute("java", true);
-			if(skill.equals("jsp")) request.setAttribute("jsp", true);
-			if(skill.equals("spring")) request.setAttribute("spring", true);
+		MemberDto memberDto = MemberDao.getIstance().getOneMemberInfo(id);
+		
+		if (memberDto.getField() != null) {  // 지원분야가 없으면 > 최초지원
+		
+			String[] skills = memberDto.getSkill().split(",");
+		
+			for (String skill : skills) {
+				if (skill.equals("html")) 		request.setAttribute("html", true);
+				if (skill.equals("css")) 		request.setAttribute("css", true);
+				if (skill.equals("javascript")) request.setAttribute("javascript", true);
+				if (skill.equals("java")) 		request.setAttribute("java", true);
+				if (skill.equals("jsp")) 		request.setAttribute("jsp", true);
+				if (skill.equals("spring")) 	request.setAttribute("spring", true);
+			}
+			
+			request.setAttribute("memberDto", memberDto);
+			request.setAttribute("isFirstApply", false);
+			
+		}
+		else {
+			request.setAttribute("isFirstApply", true);
 		}
 		
-		request.setAttribute("memberDto", memberDto);
-		request.setAttribute("isFirstApply", false);
-	
-	}else {
-			request.setAttribute("isFirstApply", true);
-	}
 		RequestDispatcher dis = request.getRequestDispatcher("step1_01_loginEx/10_update.jsp");
 		dis.forward(request, response);
 		
 	}
 	
-	
-	
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			request.setCharacterEncoding("utf-8");
 		
-			HttpSession session = request.getSession();
-			String id     = (String)session.getAttribute("id");
+		request.setCharacterEncoding("UTF-8");
 		
-		 	String pw     = request.getParameter("pw");		//화면에서 변수를 받아와 같은 이름의 변수에 넣기
-	        String name   = request.getParameter("name");
-	        String tel    = request.getParameter("tel");
-	        String email  = request.getParameter("email");
-	        String field  = request.getParameter("field");
-	        String major  = request.getParameter("major");
-	        String[] temp = request.getParameterValues("skill");
-	        String skill  = "";
-	        for (int i=0; i<temp.length; i++) {
-	        	skill += temp[i];
-	        	if (i != temp.length - 1) {
-	        		skill += ",";
-	        	}
-	        }
-	        
-	        MemberDto memberDto = new MemberDto();  //memberDto에 변수 넣기
-	        memberDto.setPw(pw);
-	        memberDto.setName(name);
-	        memberDto.setTel(tel);
-	        memberDto.setEmail(email);
-	        memberDto.setField(field);
-	        memberDto.setSkill(skill);
-	        memberDto.setMajor(major);
-	        
-			MemberDao.getIstance().updateMember(id, memberDto);
-			
-			RequestDispatcher dis = request.getRequestDispatcher("step1_01_loginEx/11_updateAction.jsp");
-			dis.forward(request, response);
+		HttpSession session = request.getSession();
+		String id     = (String)session.getAttribute("id");
+		
+        String pw     = request.getParameter("pw");
+        String name   = request.getParameter("name");
+        String tel    = request.getParameter("tel");
+        String email  = request.getParameter("email");
+        String field  = request.getParameter("field");
+        String major  = request.getParameter("major");
+        String[] temp = request.getParameterValues("skill");
+        String skill  = "";
+        for (int i=0; i<temp.length; i++) {
+        	skill += temp[i];
+        	if (i != temp.length - 1) {
+        		skill += ",";
+        	}
+        }
+
+        MemberDto memberDto = new MemberDto();
+        memberDto.setPw(pw);
+        memberDto.setName(name);
+        memberDto.setTel(tel);
+        memberDto.setEmail(email);
+        memberDto.setField(field);
+        memberDto.setSkill(skill);
+        memberDto.setMajor(major);
+        
+		MemberDao.getIstance().updateMember(id, memberDto);
+		
+		RequestDispatcher dis = request.getRequestDispatcher("step1_01_loginEx/11_updateAction.jsp");
+		dis.forward(request, response);
+		
 	}
 
 }

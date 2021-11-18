@@ -15,46 +15,48 @@ import step1_00_login.dto.MemberDto;
 
 @WebServlet("/apply92.do")
 public class Apply extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-    
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		
-		if(id != null){
-			MemberDto memberDto = MemberDao.getIstance().getOneMemberInfo("id");
-			request.setAttribute("MemberDto",memberDto);
-			
-			RequestDispatcher dis = request.getRequestDispatcher("step1_01_loginEx/07_apply.jsp");
-			dis.forward(request, response);
-		}
-		
-	}
 
+		if (id != null) {
+			MemberDto memberDto = MemberDao.getIstance().getOneMemberInfo(id);
+			request.setAttribute("memberDto", memberDto);
+		} 
+		
+		RequestDispatcher dis = request.getRequestDispatcher("step1_01_loginEx/07_apply.jsp");
+		dis.forward(request, response);
+	
+	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	request.setCharacterEncoding("utf-8");
-	
-	HttpSession session = request.getSession();
-	String id = (String)request.getAttribute("id");
-	String field = request.getParameter("field");
-	String major = request.getParameter("major");
-	String [] temp = request.getParameterValues("skill");
-	String skill = "";
-	for (int i = 0; i < temp.length; i++) {
-		skill += temp[i];
-			if(i != temp.length-1) {
+
+		request.setCharacterEncoding("UTF-8");
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		String field = request.getParameter("field");
+		String major = request.getParameter("major");
+
+		String[] temp = request.getParameterValues("skill");
+		String skill = "";
+		for (int i=0; i<temp.length; i++) {
+			skill += temp[i];
+			if (i != temp.length - 1) {
 				skill += ",";
 			}
-	}
-	
-	MemberDao.getIstance().apply(id, field, skill, major);
-	
-	RequestDispatcher dis = request.getRequestDispatcher("step1_01_loginEx/08_applyAction.jsp");
-	dis.forward(request, response);
-	
-	
+		}
+		
+		MemberDao.getIstance().apply(id, field, skill, major);
+		
+		RequestDispatcher dis = request.getRequestDispatcher("step1_01_loginEx/08_applyAction.jsp");
+		dis.forward(request, response);
+		
 	}
 
 }
