@@ -9,7 +9,7 @@
 <body>
 <div align="center">
 		<c:choose>
-			<c:when test="${isFirstApply = false}">
+			<c:when test="${isFirstApply eq false}">
 				<h1>회원정보 수정</h1>
 				<p>개인정보와 입사지원 내용을 확인해주세요.</p>
 				<hr>
@@ -32,49 +32,49 @@
 					<h4>지원 분야</h4>
 					<label>
 						<input type="radio" name="field" value="publishing" 
-							<c:if test="${ memberDto.field = 'publishing'}"> checked </c:if>>웹 퍼블리싱
+							<c:if test="${ memberDto.field eq 'publishing'}"> checked </c:if>>웹 퍼블리싱
 					</label>
 					<label>
 						<input type="radio" name="field" value="frontend" 
-							<c:if test="${ memberDto.field = 'frontend'}"> checked </c:if>>프론트앤드
+							<c:if test="${ memberDto.field eq 'frontend'}"> checked </c:if>>프론트앤드
 					</label>
 					<label>
 						<input type="radio" name="field" value="application" 
-							<c:if test="${ memberDto.field = 'application'}"> checked </c:if>>웹 애플리케이션 개발
+							<c:if test="${ memberDto.field eq 'application'}"> checked </c:if>>웹 애플리케이션 개발
 					</label>
 					<h4>기술 능력</h4>
 					<label>
 						<input type="checkbox" name="skill" value="html"
-							<c:if test="${html = true}"> checked</c:if>>HTML
+							<c:if test="${html eq true}"> checked</c:if>>HTML
 					</label>
 						
 					<label>
 						<input type="checkbox" name="skill" value="css" 
-							<c:if test="${css = true}"> checked</c:if>> CSS
+							<c:if test="${css eq true}"> checked</c:if>> CSS
 					</label>
 					<label>
 						<input type="checkbox" name="skill" value="javascript"
-							<c:if test="${javascript = true}"> checked</c:if>>JAVASCRIPT
+							<c:if test="${javascript eq true}"> checked</c:if>>JAVASCRIPT
 					</label>
 					<label>
 						<input type="checkbox" name="skill" value="java"
-							<c:if test="${java = true}"> checked</c:if>>JAVA
+							<c:if test="${java eq true}"> checked</c:if>>JAVA
 					</label>
 					<label>
 						<input type="checkbox" name="skill" value="jsp"
-							<c:if test="${jsp = true}"> checked</c:if>>JSP
+							<c:if test="${jsp eq true}"> checked</c:if>>JSP
 					</label>
 					<label>
 						<input type="checkbox" name="skill" value="spring"
-							<c:if test="${spring = true}"> checked</c:if>>SRRING
+							<c:if test="${spring eq true}"> checked</c:if>>SRRING
 					</label>
 					<h4>전공 분야</h4>
 					<label for="major">학과</label>
 					<select id="major" name="major">
-						<option value="computer" <c:if test="${ memberDto.major = 'computer' }">selected</c:if> >컴퓨터공학과</option>
-						<option value="elec" <c:if test="${ memberDto.major = 'elec' }">selected</c:if> >전기전자공학과</option>
-						<option value="mechanic" <c:if test="${ memberDto.major = 'mechanic' }">selected</c:if> >기계공학과</option>
-						<option value="indust" <c:if test="${ memberDto.major = 'indust' }">selected</c:if> >산업공학과</option>
+						<option value="computer" <c:if test="${ memberDto.major eq 'computer' }">selected</c:if> >컴퓨터공학과</option>
+						<option value="elec" <c:if test="${ memberDto.major eq 'elec' }">selected</c:if> >전기전자공학과</option>
+						<option value="mechanic" <c:if test="${ memberDto.major eq 'mechanic' }">selected</c:if> >기계공학과</option>
+						<option value="indust" <c:if test="${ memberDto.major eq 'indust' }">selected</c:if> >산업공학과</option>
 					</select>
 					<br><br>
 					<div>

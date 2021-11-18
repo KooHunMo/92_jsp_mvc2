@@ -7,7 +7,7 @@
 <title>07_apply</title>
 </head>
 <body>
-	<c:if test="${null = sessionScope.id}">
+	<c:if test="${null eq sessionScope.id}">
 		<script>
 			alert("로그인을 먼저 진행해 주세요");
 			location.href="moin92.do";
@@ -17,7 +17,7 @@
 		<h1>자바 개발자 지원서</h1>
 		<p>Java, JSP, Spring에 대한 기술적 이해와 경험이 있는 분을 찾습니다.</p>
 		<hr>
-		<form action="apply.do" method="post">
+		<form action="apply92.do" method="post">
 			<h4>개인 정보</h4>
 			<label>이름 : </label> <input type="text" name="name" value="${ memberDto.name }" > 
 			<br>

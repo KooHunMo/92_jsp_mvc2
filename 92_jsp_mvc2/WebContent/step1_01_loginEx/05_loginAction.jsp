@@ -9,7 +9,7 @@
 <body>
 
 	<c:choose>
-		<c:when test="${isLogin = true}">
+		<c:when test="${isLogin eq true}">
 			<script>
 				alert("${sessionScope.id}님 로그인을 환영합니다");
 				location.href="main92.do";

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${isJoin = true}">
+		<c:when test="${isJoin eq true}">
 			<script>
 			alert("회원가입 되었습니다.");
 			location.href="main92.do";	

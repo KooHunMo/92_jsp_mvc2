@@ -73,6 +73,7 @@ public class MemberDao {
 		
 		
 		public boolean loginMember(String id, String pw) {  //왜 memberDto가 아닌지?
+			
 			boolean isLogin = false;
 			
 			try {
@@ -111,6 +112,8 @@ public class MemberDao {
 				pstmt.setString(6, memberDto.getField());
 				pstmt.setString(7, memberDto.getMajor());
 				pstmt.setString(8, id);
+				pstmt.executeUpdate();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
@@ -159,7 +162,7 @@ public class MemberDao {
 				conn = getConnection();
 				pstmt = conn.prepareStatement("DELETE FROM MEMBER WHERE ID=? ");
 				pstmt.setString(1, id);
-				rs = pstmt.executeQuery();
+				pstmt.executeUpdate();
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -180,7 +183,7 @@ public class MemberDao {
 				pstmt.setString(2, skill);
 				pstmt.setString(3, major);
 				pstmt.setString(4, id);
-				pstmt.executeQuery();
+				pstmt.executeUpdate();
 				
 			} catch (SQLException e) {
 				e.printStackTrace();

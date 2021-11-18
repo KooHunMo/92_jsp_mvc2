@@ -44,7 +44,7 @@ public class Join extends HttpServlet {
 		
 		request.setAttribute("isJoin", isJoin);		// joinMember의 값을 가지고 있는 isJoin의 값을 가져온다.
 		
-		RequestDispatcher dis = request.getRequestDispatcher("step1_01_loginEx/03_joinAction.jsp.jsp"); // isJoin의 값을 03_joinAction으로 포워딩한다.
+		RequestDispatcher dis = request.getRequestDispatcher("step1_01_loginEx/03_joinAction.jsp"); // isJoin의 값을 03_joinAction으로 포워딩한다.
 		
 		dis.forward(request, response);
 	}
