@@ -53,12 +53,12 @@ public class Update extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+			request.setCharacterEncoding("utf-8");
 		
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
+			HttpSession session = request.getSession();
+			String id     = (String)session.getAttribute("id");
 		
-		 	String pw = request.getParameter("pw");		//화면에서 변수를 받아와 같은 이름의 변수에 넣기
+		 	String pw     = request.getParameter("pw");		//화면에서 변수를 받아와 같은 이름의 변수에 넣기
 	        String name   = request.getParameter("name");
 	        String tel    = request.getParameter("tel");
 	        String email  = request.getParameter("email");

@@ -10,7 +10,7 @@
 	<c:if test="${null eq sessionScope.id}">
 		<script>
 			alert("로그인을 먼저 진행해 주세요");
-			location.href="moin92.do";
+			location.href="main92.do";
 		</script>
 	</c:if>
 	<div align="center">

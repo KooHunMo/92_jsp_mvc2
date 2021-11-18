@@ -130,7 +130,7 @@ public class MemberDao {
 			
 			try {
 				conn = getConnection();
-				pstmt = conn.prepareStatement("SELECT * FROM MEMBER ID=?");
+				pstmt = conn.prepareStatement("SELECT * FROM MEMBER WHERE ID=?");
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
 				
