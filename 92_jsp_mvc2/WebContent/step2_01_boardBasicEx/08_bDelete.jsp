@@ -15,15 +15,15 @@
 			<table style="width: 700px" border="1">
 				<tr>
 					<td>작성자</td>
-					<td>${bdto.writer}</td>
+					<td>${boardDto.writer}</td>
 				</tr>
 				<tr>
 					<td>작성일</td>
-					<td>${bdto.regDate}</td>
+					<td>${boardDto.regDate}</td>
 				</tr>
 				<tr>
 					<td>제목</td>
-					<td>${bdto.subject}</td>
+					<td>${boardDto.subject}</td>
 				</tr>
 				<tr>
 					<td>패스워드</td>

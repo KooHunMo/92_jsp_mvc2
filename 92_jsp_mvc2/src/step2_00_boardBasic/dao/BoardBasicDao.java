@@ -75,7 +75,7 @@ public class BoardBasicDao {
 	
 	
 	public BoardBasicDto getOneBoard(int num) {
-		BoardBasicDto model = new BoardBasicDto();
+		BoardBasicDto model = new BoardBasicDto();  // model을 하나만 생성하면 되니 try문 바깥에 쓴다
 		
 		try {
 			conn = getConnection();
@@ -123,12 +123,12 @@ public class BoardBasicDao {
 				rs = pstmt.executeQuery();
 				
 				if (rs.next()) {
-					model.setNum(rs.getInt(1));
+					model.setNum(rs.getInt(1));  //dto에서 getter setter 를 사용하여 데이터를 주고 받는다.
 					model.setWriter(rs.getString(2));
 					model.setEmail(rs.getString(3));
 					model.setSubject(rs.getString(4));
 					model.setPassword(rs.getString(5));
-					model.setRegDate(rs.getDate(6).toString());  // toString 뭐냐고
+					model.setRegDate(rs.getDate(6).toString());  // toString 뭐냐고 - dto에 Date가 아닌 String으로 선언했기 때문.
 					model.setReadCount(rs.getInt(7));
 					model.setContent(rs.getString(8));
 				}
@@ -175,7 +175,7 @@ public class BoardBasicDao {
 			conn = getConnection();
 			pstmt = conn.prepareStatement("INSERT INTO BOARD(WRITER,EMAIL,SUBJECT,PASSWORD,REG_DATE,READ_COUNT,CONTENT) VALUES(?, ?, ?, ?, now(), 0, ?)");
 			pstmt.setString(1, boardDto.getWriter());
-			pstmt.setString(1, boardDto.getEmail());
+			pstmt.setString(2, boardDto.getEmail());
 			pstmt.setString(3, boardDto.getSubject());
 			pstmt.setString(4, boardDto.getPassword());
 			pstmt.setString(5, boardDto.getContent());
@@ -222,7 +222,7 @@ public class BoardBasicDao {
 			conn = getConnection();
 			pstmt = conn.prepareStatement("DELETE FROM BOARD WHERE NUM=?");
 			pstmt.setInt(1, boardDto.getNum());
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 			isDelete = true;
 			}
 		} catch (Exception e) {

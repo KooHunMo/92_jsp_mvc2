@@ -27,6 +27,7 @@ public class _03_bWriteAction extends HttpServlet {
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
+		
 		BoardBasicDto boardDto = new BoardBasicDto();
 		boardDto.setWriter(request.getParameter("writer"));
 		boardDto.setSubject(request.getParameter("subject"));
