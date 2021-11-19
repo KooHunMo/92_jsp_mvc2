@@ -30,7 +30,7 @@ public class _04_bList extends HttpServlet {
 		
 		ArrayList<BoardBasicDto> boardList = BoardBasicDao.getInstance().getAllBoard(); // 여기엔 왜 boardDto 안 넣어도 되지? // boardDto를 메서드에서 변수로 안 받아오기 때문이다.
 		
-		request.setAttribute("boardList", boardList); // 서버에 이미있는 boardList를 연결시켜준다 맞나?
+		request.setAttribute("boardList", boardList); // 서버에 이미있는 boardList를 연결시켜준다 맞나? 속성, 값
 		
 		RequestDispatcher dis = request.getRequestDispatcher("step2_01_boardBasicEx/04_bList.jsp");
 		dis.forward(request, response);
